@@ -1,12 +1,13 @@
 import { StyledCard } from "./styles/Card.styled";
 
-const Card = () => {
+const Card = (props) => {
+  const { name, url, star } = props;
   return (
     <StyledCard>
-      <a href="https://www.google.com">
-        <img src="/logo192.png" alt="" />
+      <a href={url} target="_blank" rel="noreferrer">
+        <h1>{name}</h1>
       </a>
-      <p>Card</p>
+      <p>stargazers count: {star}</p>
     </StyledCard>
   );
 };
