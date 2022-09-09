@@ -6,3 +6,10 @@ export const Container = styled.div`
   padding: 0 20px;
   margin: 0 auto;
 `;
+
+export const CenterContainer = styled(Container)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+`;

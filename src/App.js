@@ -4,6 +4,7 @@ import GlobalStyles from "./components/styles/Global";
 import List from "./components/List";
 import Search from "./components/Search";
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 const theme = {
   colors: {
@@ -16,14 +17,30 @@ const theme = {
 function App() {
   const [repos, setRepos] = useState(null);
   const [isError, setError] = useState("");
+  const [username, setUsername] = useState("");
 
   return (
     <div>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Header />
-        <Search setRepos={setRepos} setError={setError} />
-        <List repos={repos} isError={isError} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Search
+                setRepos={setRepos}
+                setError={setError}
+                username={username}
+                setUsername={setUsername}
+              />
+            }
+          />
+          <Route
+            path={`/users/${username}/repos`}
+            element={<List repos={repos} isError={isError} />}
+          />
+        </Routes>
       </ThemeProvider>
     </div>
   );
