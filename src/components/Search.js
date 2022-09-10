@@ -19,7 +19,9 @@ const Search = (props) => {
     setRepos(null);
 
     axios
-      .get(`https://api.github.com/users/${username}/repos?page=1&per_page=10`)
+      .get(
+        `https://api.github.com/users/${username}/repos?sort=created&page=1&per_page=10`
+      )
       .then((response) => {
         if (response.status === 404) {
           setError(response.data.message);

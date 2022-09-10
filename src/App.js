@@ -38,7 +38,14 @@ function App() {
           />
           <Route
             path={`/users/${username}/repos`}
-            element={<List repos={repos} isError={isError} />}
+            element={
+              <List
+                repos={repos}
+                setRepos={setRepos}
+                isError={isError}
+                username={username}
+              />
+            }
           />
         </Routes>
       </ThemeProvider>

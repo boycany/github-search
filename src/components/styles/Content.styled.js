@@ -4,4 +4,5 @@ export const StyledContent = styled.div`
   background: ${({ theme }) => theme.colors.content};
   margin: 25px 0;
   padding: 0.5rem 0;
+  border-radius: 4px;
 `;
