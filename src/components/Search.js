@@ -23,6 +23,7 @@ const Search = (props) => {
         `https://api.github.com/users/${username}/repos?sort=created&page=1&per_page=10`
       )
       .then((response) => {
+        console.log("response :>> ", response);
         if (response.status === 404) {
           setError(response.data.message);
           return;

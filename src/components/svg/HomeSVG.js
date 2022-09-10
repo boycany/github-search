@@ -5,12 +5,13 @@ const HomeSVG = () => {
     position: "absolute",
     top: 8,
     left: 10,
-    border: "0.5px solid",
+    border: "0.5px solid #3397cf",
     borderRadius: "5px",
     padding: "2px",
-    backgroundColor: "#00324e",
+    // backgroundColor: "#00324e",
+    backgroundColor: "#fff",
     cursor: "pointer",
-    color: "#fff",
+    color: "teal",
   };
 
   return (
