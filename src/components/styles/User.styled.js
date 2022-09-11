@@ -6,21 +6,23 @@ export const StyledUser = styled.a`
   margin: 15px 30px;
   padding: 10px 20px;
   align-items: center;
-  /* border-color: #3397cf; */
-  /* color: #fa5f55; */
-  color: teal;
-  border: 1px solid #3397cf;
+  font-weight: 500;
+  color: black;
+  border: 1px solid beige;
   border-radius: 8px;
   cursor: pointer;
+  background: rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background: #3397cf;
-    color: white;
+    border: 1px solid gray;
   }
 
-  & > img {
+  & > svg {
     width: 36px;
     height: 36px;
+    vertical-align: middle;
+    overflow: hidden;
+    margin-right: 0.5em;
   }
 
   & > p {
