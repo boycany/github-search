@@ -6,34 +6,45 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import SearchSVG from "./svg/SearchSVG";
 import { StyledSearch } from "./styles/Search.styled";
+import { useState } from "react";
 
 const Search = (props) => {
-  const { setRepos, setError, setUsername, username } = props;
+  const { setError } = props;
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
 
   const handleInput = (e) => {
     setUsername(e.target.value);
   };
 
   const handleSearch = () => {
-    setRepos(null);
-
     axios
       .get(
         `https://api.github.com/users/${username}/repos?sort=created&page=1&per_page=10`
       )
       .then((response) => {
-        console.log("response :>> ", response);
+        // console.log("response :>> ", response);
         if (response.status === 404) {
           setError(response.data.message);
           return;
         }
+        if (response.data.length < 10) {
+          sessionStorage.setItem("isEnd", true);
+        } else {
+          sessionStorage.setItem("isEnd", false);
+        }
         setError("");
-        setRepos(response.data);
+        sessionStorage.setItem("username", username);
+        sessionStorage.setItem("repos", JSON.stringify(response.data));
+        sessionStorage.setItem("page", 1);
         navigate(`/users/${username}/repos`);
       })
       .catch((err) => {
         setError(err.response.data.message);
+        sessionStorage.setItem("username", username);
+        sessionStorage.removeItem("repos");
+        sessionStorage.removeItem("isEnd");
+        sessionStorage.removeItem("page");
         navigate(`/users/${username}/repos`);
       });
   };

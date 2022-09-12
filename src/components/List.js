@@ -2,17 +2,19 @@ import { Container } from "./styles/Container.styled";
 import { StyledContent } from "./styles/Content.styled";
 import { Flex } from "./styles/Flex.styled";
 import Card from "./Card";
-import { useState } from "react";
 import axios from "axios";
 import User from "./User";
 import Loading from "./Loading";
 import useInfiniteScroll from "./hook/useInfiniteScroll";
 
 const List = (props) => {
-  const { repos, setRepos, isError, username } = props;
+  let { isError } = props;
 
-  const [nextPage, setNextPage] = useState(2);
-  const [isEnd, setIsEnd] = useState(false);
+  const username = sessionStorage.getItem("username");
+  let repos = JSON.parse(sessionStorage.getItem("repos"));
+  let isEnd =
+    sessionStorage.getItem("isEnd") === "true" ? true : "false" ? false : null;
+
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreItems);
 
   function fetchMoreItems() {
@@ -20,19 +22,27 @@ const List = (props) => {
       setIsFetching(false);
       return;
     }
+
+    repos = JSON.parse(sessionStorage.getItem("repos"));
+    let newPage = Number(sessionStorage.getItem("page")) + 1;
+
     axios
       .get(
-        `https://api.github.com/users/${username}/repos?sort=created&page=${nextPage}&per_page=10`
+        `https://api.github.com/users/${username}/repos?sort=created&page=${newPage}&per_page=10`
       )
       .then((response) => {
-        console.log("response", response);
+        // console.log("response", response);
         if (response.data.length === 0) {
-          setIsEnd(true);
+          sessionStorage.setItem("isEnd", true);
           setIsFetching(false);
           return;
         }
-        setNextPage((prevPage) => prevPage + 1);
-        setRepos((prevRepos) => [...prevRepos, ...response.data]);
+        if (response.data.length < 10) {
+          sessionStorage.setItem("isEnd", true);
+        }
+        repos = repos.concat(response.data);
+        sessionStorage.setItem("repos", JSON.stringify(repos));
+        sessionStorage.setItem("page", newPage.toString());
         setIsFetching(false);
       })
       .catch((err) => {

@@ -4,7 +4,7 @@ const useInfiniteScroll = (callback) => {
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
-    console.log("EFFECT #1");
+    // console.log("EFFECT #1");
     function handleScroll() {
       const { innerHeight } = window;
       const { scrollTop, offsetHeight } = document.documentElement;
@@ -18,7 +18,7 @@ const useInfiniteScroll = (callback) => {
   }, []);
 
   useEffect(() => {
-    console.log("EFFECT #2");
+    // console.log("EFFECT #2");
     if (!isFetching) return;
 
     callback(() => {

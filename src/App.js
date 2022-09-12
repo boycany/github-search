@@ -15,9 +15,7 @@ const theme = {
 };
 
 function App() {
-  const [repos, setRepos] = useState(null);
   const [isError, setError] = useState("");
-  const [username, setUsername] = useState("");
 
   return (
     <div>
@@ -25,27 +23,10 @@ function App() {
         <GlobalStyles />
         <Header />
         <Routes>
+          <Route path="/" element={<Search setError={setError} />} />
           <Route
-            path="/"
-            element={
-              <Search
-                setRepos={setRepos}
-                setError={setError}
-                username={username}
-                setUsername={setUsername}
-              />
-            }
-          />
-          <Route
-            path={`/users/${username}/repos`}
-            element={
-              <List
-                repos={repos}
-                setRepos={setRepos}
-                isError={isError}
-                username={username}
-              />
-            }
+            path={`/users/:username/repos`}
+            element={<List isError={isError} />}
           />
         </Routes>
       </ThemeProvider>
