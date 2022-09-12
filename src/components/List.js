@@ -8,6 +8,7 @@ import Loading from "./Loading";
 import useInfiniteScroll from "./hook/useInfiniteScroll";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import GoToTop from "./GoToTop";
 
 const List = (props) => {
   let { isError, setError } = props;
@@ -127,6 +128,7 @@ const List = (props) => {
           {isFetching && !isEnd && <Loading />}
         </Flex>
       </StyledContent>
+      <GoToTop />
     </Container>
   );
 };
