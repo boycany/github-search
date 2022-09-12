@@ -49,55 +49,53 @@ const RepoDetail = (props) => {
   };
 
   return (
-    <>
-      {!isError && (
-        <Container>
-          <StyledContent>
-            <>
-              <BackToPrev onClick={handleBack}>X</BackToPrev>
-              <StyledUserDetail>
-                <div>
-                  <img src={repoDetail.owner.avatar_url} alt="" />
-                </div>
-                <a
-                  href={repoDetail.owner.html_url}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  @{repoDetail.owner.login}
-                </a>
-              </StyledUserDetail>
-              <hr />
-              <StyledRepoDetail>
-                <h2>{repoDetail.full_name}</h2>
-                <p>{repoDetail.description}</p>
-                <div>
-                  <p>
-                    <img
-                      src="https://img.icons8.com/fluency/48/000000/star.png"
-                      style={{ width: "20px" }}
-                      alt=""
-                    />
-                    <span>{repoDetail.stargazers_count}</span>
-                  </p>
-                  <p>
-                    <GithubSVG />
-                    <a
-                      href={repoDetail.html_url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Link
-                    </a>
-                  </p>
-                </div>
-              </StyledRepoDetail>
-            </>
-          </StyledContent>
-        </Container>
-      )}
-      {isError && <ErrorPage word={`錯誤：${isError}`} />}
-    </>
+    <Container>
+      <StyledContent>
+        {!isError && (
+          <>
+            <BackToPrev onClick={handleBack}>X</BackToPrev>
+            <StyledUserDetail>
+              <div>
+                <img src={repoDetail.owner.avatar_url} alt="" />
+              </div>
+              <a
+                href={repoDetail.owner.html_url}
+                rel="noreferrer"
+                target="_blank"
+              >
+                @{repoDetail.owner.login}
+              </a>
+            </StyledUserDetail>
+            <hr />
+            <StyledRepoDetail>
+              <h2>{repoDetail.full_name}</h2>
+              <p>{repoDetail.description}</p>
+              <div>
+                <p>
+                  <img
+                    src="https://img.icons8.com/fluency/48/000000/star.png"
+                    style={{ width: "20px" }}
+                    alt=""
+                  />
+                  <span>{repoDetail.stargazers_count}</span>
+                </p>
+                <p>
+                  <GithubSVG />
+                  <a
+                    href={repoDetail.html_url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Link
+                  </a>
+                </p>
+              </div>
+            </StyledRepoDetail>
+          </>
+        )}
+        {isError && <ErrorPage word={`404：${isError}`} />}
+      </StyledContent>
+    </Container>
   );
 };
 

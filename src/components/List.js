@@ -123,11 +123,10 @@ const List = (props) => {
                 />
               );
             })}
-          {isError && <ErrorPage word={`錯誤：${isError}`} styled={true} />}
+          {isError && <ErrorPage word={`404：${isError}`} />}
           {repos && repos.length === 0 && !isError && (
             <ErrorPage
               word={`This user doesn't have any public repositories yet.`}
-              styled={true}
             />
           )}
           {isFetching && !isEnd && <Loading />}

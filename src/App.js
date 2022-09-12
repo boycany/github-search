@@ -34,7 +34,10 @@ function App() {
             path={`/users/:username/repos/:repo`}
             element={<RepoDetail isError={isError} setError={setError} />}
           />
-          <Route path="*" element={<ErrorPage word={"Page not found."} />} />
+          <Route
+            path="*"
+            element={<ErrorPage word={"Page not found."} unstyled={true} />}
+          />
         </Routes>
       </ThemeProvider>
     </div>
