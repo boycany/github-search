@@ -21,11 +21,6 @@ export const StyledCard = styled.div`
     margin-right: 16px;
   }
 
-  /* & > a > p {
-    font-size: 36px;
-    font-weight: 600;
-  } */
-
   & > p:nth-child(2) {
     padding-top: 10px;
   }
@@ -55,10 +50,7 @@ export const StyledCard = styled.div`
     & > p:nth-child(3) {
       display: flex;
       flex-wrap: wrap;
-
-      span:nth-child(3) {
-        margin-top: 6px;
-      }
+      justify-content: center;
     }
     & > a > p {
       font-size: 24px;

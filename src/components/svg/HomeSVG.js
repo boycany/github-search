@@ -1,19 +1,6 @@
 import { Link } from "react-router-dom";
 
 const HomeSVG = () => {
-  const svg_style = {
-    position: "absolute",
-    top: 8,
-    left: 10,
-    border: "0.5px solid #3397cf",
-    borderRadius: "5px",
-    padding: "2px",
-    // backgroundColor: "#00324e",
-    backgroundColor: "#fff",
-    cursor: "pointer",
-    color: "teal",
-  };
-
   return (
     <Link to="/">
       <svg
@@ -22,7 +9,6 @@ const HomeSVG = () => {
         height="32"
         fill="currentColor"
         viewBox="0 0 16 16"
-        style={svg_style}
       >
         {" "}
         <path
