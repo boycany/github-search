@@ -1,10 +1,10 @@
 import { StyledUser } from "./styles/User.styled";
-import UserSVG from "./svg/UserSVG";
+import GithubSVG from "./svg/GithubSVG";
 
 const User = ({ username }) => {
   return (
     <StyledUser href={`https://github.com/${username}`} target="_blank">
-      <UserSVG />
+      <GithubSVG />
       <p>@{username}</p>
     </StyledUser>
   );

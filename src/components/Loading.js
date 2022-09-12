@@ -1,4 +1,4 @@
-import { LoadingWrapper, Dot } from "./styles/Loadind.styled";
+import { LoadingWrapper, Dot } from "./styles/Loading.styled";
 
 const Loading = () => {
   return (

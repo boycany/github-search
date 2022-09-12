@@ -7,14 +7,10 @@ export const StyledCard = styled.div`
   border: 1px solid #efefef;
   border-radius: 4px;
 
-  & > a {
-    text-decoration: none;
-    color: black;
-
-    p {
-      font-size: 36px;
-      font-weight: 600;
-    }
+  & > p:nth-child(1) {
+    font-size: 36px;
+    font-weight: 600;
+    cursor: pointer;
   }
 
   & > p > span {
@@ -52,7 +48,7 @@ export const StyledCard = styled.div`
       flex-wrap: wrap;
       justify-content: center;
     }
-    & > a > p {
+    & > p:nth-child(1) {
       font-size: 24px;
     }
   }

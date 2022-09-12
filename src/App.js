@@ -5,6 +5,8 @@ import List from "./components/List";
 import Search from "./components/Search";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import RepoDetail from "./components/RepoDetail";
+import ErrorPage from "./components/ErrorPage";
 
 const theme = {
   colors: {
@@ -28,7 +30,11 @@ function App() {
             path={`/users/:username/repos`}
             element={<List isError={isError} setError={setError} />}
           />
-          <Route path="*" element={<h1>Page Not Found.</h1>} />
+          <Route
+            path={`/users/:username/repos/:repo`}
+            element={<RepoDetail isError={isError} setError={setError} />}
+          />
+          <Route path="*" element={<ErrorPage word={"Page not found."} />} />
         </Routes>
       </ThemeProvider>
     </div>

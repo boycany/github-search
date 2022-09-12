@@ -9,6 +9,7 @@ import useInfiniteScroll from "./hook/useInfiniteScroll";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import GoToTop from "./GoToTop";
+import ErrorPage from "./ErrorPage";
 
 const List = (props) => {
   let { isError, setError } = props;
@@ -111,19 +112,23 @@ const List = (props) => {
               } = repo;
               return (
                 <Card
+                  username={username}
                   description={description}
                   created_at={created_at}
                   language={language}
-                  name={name}
+                  repoName={name}
                   star={stargazers_count}
                   url={html_url}
                   key={id}
                 />
               );
             })}
-          {isError && <h1>錯誤：{isError}</h1>}
+          {isError && <ErrorPage word={`錯誤：${isError}`} styled={true} />}
           {repos && repos.length === 0 && !isError && (
-            <h1>This user doesn't have any public repositories yet.</h1>
+            <ErrorPage
+              word={`This user doesn't have any public repositories yet.`}
+              styled={true}
+            />
           )}
           {isFetching && !isEnd && <Loading />}
         </Flex>

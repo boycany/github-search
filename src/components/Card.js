@@ -1,15 +1,33 @@
 import { StyledCard } from "./styles/Card.styled";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Card = (props) => {
-  const { name, url, star, created_at, language, description } = props;
+  const { repoName, star, created_at, language, description, username } = props;
+
+  const navigate = useNavigate();
 
   const formattedDate = created_at.slice(0, 10);
 
+  const LinkToRepoDetail = () => {
+    axios
+      .get(`https://api.github.com/repos/${username}/${repoName}`)
+      .then((response) => {
+        // console.log(response);
+
+        sessionStorage.setItem("repoDetail", JSON.stringify(response.data));
+        sessionStorage.setItem("repoName", repoName);
+
+        navigate(`/users/${username}/repos/${repoName}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <StyledCard>
-      <a href={url} target="_blank" rel="noreferrer">
-        <p>{name}</p>
-      </a>
+      <p onClick={LinkToRepoDetail}>{repoName}</p>
       <p>{description}</p>
       <p>
         <span>
