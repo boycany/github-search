@@ -6,9 +6,9 @@ const GoToTop = () => {
 
   useEffect(() => {
     function handleScroll() {
-      const isTop = window.scrollY < 150;
+      const isBtnHide = window.scrollY < 150;
 
-      !isTop ? setScrolled(true) : setScrolled(false);
+      !isBtnHide ? setScrolled(true) : setScrolled(false);
     }
 
     window.addEventListener("scroll", handleScroll);
