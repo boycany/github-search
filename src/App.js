@@ -26,8 +26,9 @@ function App() {
           <Route path="/" element={<Search setError={setError} />} />
           <Route
             path={`/users/:username/repos`}
-            element={<List isError={isError} />}
+            element={<List isError={isError} setError={setError} />}
           />
+          <Route path="*" element={<h1>Page Not Found.</h1>} />
         </Routes>
       </ThemeProvider>
     </div>

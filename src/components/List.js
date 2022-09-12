@@ -6,16 +6,55 @@ import axios from "axios";
 import User from "./User";
 import Loading from "./Loading";
 import useInfiniteScroll from "./hook/useInfiniteScroll";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const List = (props) => {
-  let { isError } = props;
+  let { isError, setError } = props;
 
-  const username = sessionStorage.getItem("username");
+  let username = sessionStorage.getItem("username");
   let repos = JSON.parse(sessionStorage.getItem("repos"));
   let isEnd =
     sessionStorage.getItem("isEnd") === "true" ? true : "false" ? false : null;
 
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreItems);
+
+  const params = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (username !== params.username) {
+      axios
+        .get(
+          `https://api.github.com/users/${params.username}/repos?sort=created&page=1&per_page=10`
+        )
+        .then((response) => {
+          // console.log("response :>> ", response);
+          if (response.status === 404) {
+            setError(response.data.message);
+            return;
+          }
+          if (response.data.length < 10) {
+            sessionStorage.setItem("isEnd", true);
+          } else {
+            sessionStorage.setItem("isEnd", false);
+          }
+          setError("");
+          sessionStorage.setItem("username", params.username);
+          sessionStorage.setItem("repos", JSON.stringify(response.data));
+          sessionStorage.setItem("page", 1);
+          navigate(`/users/${params.username}/repos`);
+        })
+        .catch((err) => {
+          setError(err.response.data.message);
+          sessionStorage.setItem("username", params.username);
+          sessionStorage.removeItem("repos");
+          sessionStorage.removeItem("isEnd");
+          sessionStorage.removeItem("page");
+          navigate(`/users/${params.username}/repos`);
+        });
+    }
+  });
 
   function fetchMoreItems() {
     if (isEnd) {
