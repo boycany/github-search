@@ -41,8 +41,8 @@ npm start will automatically open [**http://localhost:3000**](http://localhost:3
 ### [App.js]: for direct route
 
 - [Search]: route at `/`
-- [List]: route at /users/:username/repos
-- [RepoDetail]: route at /users/:username/repos/:repo
+- [List]: route at `/users/:username/repos`
+- [RepoDetail]: route at `/users/:username/repos/:repo`
 - [ErrorPage]: route at `*` for preventing user direct to the route that doesn't exist.
 
 ### [Search.js]
@@ -60,7 +60,8 @@ npm start will automatically open [**http://localhost:3000**](http://localhost:3
 ### [useInfiniteScroll.js]
 
 - Custom hook for infinite scroll logic
-- Return [isFetching, setIsFetching]
+- Return `[isFetching, setIsFetching]`
+  `
 
 ### [RepoDetail.js]
 
