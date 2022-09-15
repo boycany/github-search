@@ -1,5 +1,5 @@
-import { Container } from "./styles/Container.styled";
-import { StyledContent } from "./styles/Content.styled";
+import { Container } from "../components/styles/Container.styled";
+import { StyledContent } from "../components/styles/Content.styled";
 
 const ErrorPage = ({ word, unstyled }) => {
   return unstyled ? (

@@ -1,11 +1,13 @@
-import { CenterContainer } from "./styles/Container.styled";
-import { Flex } from "./styles/Flex.styled";
-import { Button } from "./styles/Button.styled";
-import { Input } from "./styles/Input.styled";
+import { CenterContainer } from "../components/styles/Container.styled";
+import { Flex } from "../components/styles/Flex.styled";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import SearchSVG from "./svg/SearchSVG";
-import { StyledSearch } from "./styles/Search.styled";
+import SearchSVG from "../components/svg/SearchSVG";
+import {
+  StyledSearch,
+  Button,
+  Input,
+} from "../components/styles/Search.styled";
 import { useState } from "react";
 
 const Search = (props) => {

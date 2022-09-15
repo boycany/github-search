@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { Container } from "./styles/Container.styled";
-import { StyledContent } from "./styles/Content.styled";
-import GithubSVG from "./svg/GithubSVG";
+import { Container } from "../components/styles/Container.styled";
+import { StyledContent } from "../components/styles/Content.styled";
+import GithubSVG from "../components/svg/GithubSVG";
 import {
   StyledUserDetail,
   StyledRepoDetail,
   BackToPrev,
-} from "./styles/RepoDetail.styled";
+} from "../components/styles/RepoDetail.styled";
 import ErrorPage from "./ErrorPage";
 
 const RepoDetail = (props) => {

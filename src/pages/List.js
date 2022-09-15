@@ -1,14 +1,14 @@
-import { Container } from "./styles/Container.styled";
-import { StyledContent } from "./styles/Content.styled";
-import { Flex } from "./styles/Flex.styled";
-import Card from "./Card";
+import { Container } from "../components/styles/Container.styled";
+import { StyledContent } from "../components/styles/Content.styled";
+import { Flex } from "../components/styles/Flex.styled";
+import Card from "../components/Card";
 import axios from "axios";
-import User from "./User";
-import Loading from "./Loading";
-import useInfiniteScroll from "./hook/useInfiniteScroll";
+import User from "../components/User";
+import Loading from "../components/Loading";
+import useInfiniteScroll from "../components/hook/useInfiniteScroll";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import GoToTop from "./GoToTop";
+import GoToTop from "../components/GoToTop";
 import ErrorPage from "./ErrorPage";
 
 const List = (props) => {

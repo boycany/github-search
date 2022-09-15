@@ -1,12 +1,12 @@
 import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import GlobalStyles from "./components/styles/Global";
-import List from "./components/List";
-import Search from "./components/Search";
+import List from "./pages//List";
+import Search from "./pages//Search";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import RepoDetail from "./components/RepoDetail";
-import ErrorPage from "./components/ErrorPage";
+import RepoDetail from "./pages//RepoDetail";
+import ErrorPage from "./pages/ErrorPage";
 
 const theme = {
   colors: {
